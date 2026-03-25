@@ -1,0 +1,88 @@
+{
+  "B1": {
+    "type": "building",
+    "attr": {
+      "function": "residential",
+      "floor_number": 3,
+      "shape": "prism rectangular",
+      "area": 13.8
+    },
+    "parent_buildings": ["R1", "R2"]
+  },
+  "R1": {
+    "type": "room",
+    "attr": {
+      "class": "living room",
+      "shape": "prism rectangular",
+      "size": [6.5, 4.9, 3.5]
+    },
+    "parent_buildings": ["B1"],
+    "parent_spaces": ["O1", "O2"],
+    "rmv": {
+      "R2": 2.0
+    }
+  },
+  "R2": {
+    "type": "room",
+    "attr": {
+      "class": "kitchen",
+      "shape": "prism rectangular",
+      "size": [3.5, 3.2, 3.5]
+    },
+    "parent_buildings": ["B1"],
+    "parent_spaces": ["O3"],
+    "rmv": {
+      "R1": 0.5
+    }
+  },
+  "O1": {
+    "type": "object",
+    "attr": {
+      "class": "couch",
+      "area": 2.2
+    },
+    "parent_spaces": ["R1"],
+    "rmv": {
+      "O2": 0.85
+    }
+  },
+  "O2": {
+    "type": "object",
+    "attr": {
+      "class": "tv",
+      "area": 1.0
+    },
+    "parent_spaces": ["R1"],
+    "rmv": {
+      "O1": 0.85
+    }
+  },
+   "O3": {
+    "type": "object",
+    "attr": {
+      "class": "fridge",
+      "area": 0.8
+    },
+    "parent_spaces": ["R2"]
+  },
+  "C1": {
+    "type": "camera",
+    "attr": {
+      "fov": 75,
+      "modality" : "RGB",
+      "pose" : [3.8, 2.5, 1.5, 0.0, 0.0, 0.0],
+      "resolution": [1024, 1024]
+    },
+    "occlusion": {
+      "O1": ["O2"]
+    },
+    "spatial_order": {
+      "O1": {
+        "O2": [0.8, 0.3, -0.1]
+      },
+      "R1": {
+        "O1": [1.6, 0.0, 0.0]
+      }
+    }
+  }
+}
