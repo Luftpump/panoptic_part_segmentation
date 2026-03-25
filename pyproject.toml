@@ -10,7 +10,7 @@ authors = [
     { name="Johannes Krautheimer", email="krautheimer.j@gmail.com" }
 ]
 readme = "README.md"
-requires-python = "==3.10.11"
+requires-python = "==3.10.*"
 
 dependencies = [
     "matplotlib",
