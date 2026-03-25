@@ -7,7 +7,7 @@
       "shape": "prism rectangular",
       "area": 13.8
     },
-    "parent_buildings": ["R1"]
+    "parent_buildings": ["R1", "R2"]
   },
   "R1": {
     "type": "room",
@@ -19,13 +19,26 @@
     "parent_buildings": ["B1"],
     "parent_spaces": ["O1", "O2"],
     "rmv": {
-      "R1": 1.0
+      "R2": 2.0
+    }
+  },
+  "R2": {
+    "type": "room",
+    "attr": {
+      "class": "kitchen",
+      "shape": "prism rectangular",
+      "size": [3.5, 3.2, 3.5]
+    },
+    "parent_buildings": ["B1"],
+    "parent_spaces": ["O3"],
+    "rmv": {
+      "R1": 0.5
     }
   },
   "O1": {
     "type": "object",
     "attr": {
-      "class": "bed",
+      "class": "couch",
       "area": 2.2
     },
     "parent_spaces": ["R1"],
@@ -43,6 +56,14 @@
     "rmv": {
       "O1": 0.85
     }
+  },
+   "O3": {
+    "type": "object",
+    "attr": {
+      "class": "fridge",
+      "area": 0.8
+    },
+    "parent_spaces": ["R2"]
   },
   "C1": {
     "type": "camera",

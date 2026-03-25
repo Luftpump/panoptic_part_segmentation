@@ -2,8 +2,14 @@
 Showcase of how to use the SceneGraph class to load a scene graph from a JSON file 
 and query its properties.
 """
+import torch
+import matplotlib
+import numpy as np
 
 from src.SceneGraph import SceneGraph
+
+from transformers import Owlv2Processor, Owlv2ForObjectDetection
+from PIL import Image
 
 if __name__ == "__main__":
     # Load the scene graph from a JSON file
@@ -11,6 +17,8 @@ if __name__ == "__main__":
     scene_graph.load_from_json("material/example.json")
 
     scene_graph.print_statistics()
+
+    scene_graph.print_graph()
 
     # Tests
     camera = scene_graph.graph["C1"]

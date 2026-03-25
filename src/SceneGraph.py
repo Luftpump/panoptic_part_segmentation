@@ -278,8 +278,49 @@ class SceneGraph:
         num_cameras = sum(1 for node in self.graph.values() if isinstance(node, Camera))
         
         print(f"Scene Graph Statistics:")
-        print(f"Total number of nodes: {len(self.graph)}")
-        print(f"Number of Buildings: {num_buildings}")
-        print(f"Number of Rooms: {num_rooms}")
-        print(f"Number of Objects: {num_objects}")
-        print(f"Number of Cameras: {num_cameras}")
+        print(f"  Total number of nodes: {len(self.graph)}")
+        print(f"    Number of Buildings: {num_buildings}")
+        print(f"    Number of Rooms: {num_rooms}")
+        print(f"    Number of Objects: {num_objects}")
+        print(f"    Number of Cameras: {num_cameras}")
+
+    def print_graph(self):
+        """
+        Prints the structure of the scene graph, showing the relationships between buildings, rooms, objects, and cameras.
+        """
+        used = []
+        for id, node in self.graph.items():
+            if id in used:
+                continue
+            if isinstance(node, Building):
+                print(f"In building {id} (function: {node.specify_type()}):")
+                for room in node.get_rooms():
+                    room_id = [key for key, value in self.graph.items() if value == room][0]
+                    print(f"  In room {room_id} (class: {room.specify_type()}):")
+                    used.append(room_id)
+                    for obj in room.get_objects():
+                        obj_id = [key for key, value in self.graph.items() if value == obj][0]
+                        print(f"    Object {obj_id} (class: {obj.specify_type()})")
+        for id, node in self.graph.items():
+            if id in used:
+                continue
+            if isinstance(node, Room):
+                print(f"In room {id} (class: {node.specify_type()}):")
+                for obj in node.get_objects():
+                    obj_id = [key for key, value in self.graph.items() if value == obj][0]
+                    print(f"  Object {obj_id} (class: {obj.specify_type()})")
+        for id, node in self.graph.items():
+            if isinstance(node, Camera):
+                print(f"Camera {id}:")
+                for obj, occluders in node.occlusion.items():
+                    obj_id = [key for key, value in self.graph.items() if value == obj][0]
+                    print(f"  Object {obj_id} is occluded by:")
+                    for occluder in occluders:
+                        occluder_id = [key for key, value in self.graph.items() if value == occluder][0]
+                        print(f"    {occluder_id}")
+                for entity1, entity2_orders in node.spatial_order.items():
+                    entity1_id = [key for key, value in self.graph.items() if value == entity1][0]
+                    print(f"  Spatial order for {entity1_id}:")
+                    for entity2, order in entity2_orders.items():
+                        entity2_id = [key for key, value in self.graph.items() if value == entity2][0]
+                        print(f"    {entity2_id}: {order}")
