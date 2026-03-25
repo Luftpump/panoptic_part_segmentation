@@ -1,8 +1,0 @@
-README.md
-pyproject.toml
-src/SceneGraph.py
-src/3D_Scene_Graph.egg-info/PKG-INFO
-src/3D_Scene_Graph.egg-info/SOURCES.txt
-src/3D_Scene_Graph.egg-info/dependency_links.txt
-src/3D_Scene_Graph.egg-info/requires.txt
-src/3D_Scene_Graph.egg-info/top_level.txt
