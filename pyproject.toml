@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "3D-Scene-Graph"
+version = "0.1.0"
+description = "A coding exercise for 3D Scene Graph"
+authors = [
+    { name="Johannes Krautheimer", email="krautheimer.j@gmail.com" }
+]
+readme = "README.md"
+requires-python = "==3.10.11"
+
+dependencies = [
+    "numpy"
+]
+
+[project.urls]
+Homepage = "https://github.com/Luftpump/panoptic_part_segmentation"
